@@ -417,6 +417,19 @@ html[dir="rtl"] address, html[dir="rtl"] .phones a { direction: ltr; text-align:
   *, *::before, *::after { animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; }
 }
 
+/* ---------- preguntas frecuentes ---------- */
+.faq { padding: clamp(80px, 10vw, 150px) var(--pad); background: var(--bg2); display: grid; grid-template-columns: .8fr 1.2fr; gap: clamp(30px, 6vw, 90px); align-items: start; }
+.faq__head { position: sticky; top: 110px; }
+.faq__list { border-top: 1px solid var(--line); }
+.faq__q { border-bottom: 1px solid var(--line); }
+.faq__q summary { list-style: none; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 20px; padding: 22px 0; font-family: var(--serif); font-size: clamp(20px, 2vw, 26px); line-height: 1.25; color: var(--ink); transition: color .25s; }
+.faq__q summary::-webkit-details-marker { display: none; }
+.faq__q summary::after { content: ''; flex: none; width: 14px; height: 14px; background: var(--gold); clip-path: polygon(50% 0, 64.6% 35.4%, 100% 50%, 64.6% 64.6%, 50% 100%, 35.4% 64.6%, 0 50%, 35.4% 35.4%); transition: transform .4s var(--ease); }
+.faq__q[open] summary::after { transform: rotate(45deg); }
+.faq__q summary:hover { color: var(--gold2); }
+.faq__q p { color: var(--mute); padding: 0 0 24px; max-width: 42em; }
+@media (max-width: 980px) { .faq { grid-template-columns: 1fr; } .faq__head { position: relative; top: 0; } }
+
 /* ==========================================================
    LEGAL · aviso de cookies, mapa con consentimiento y páginas
    ========================================================== */

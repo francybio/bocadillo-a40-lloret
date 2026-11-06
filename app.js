@@ -587,7 +587,7 @@ const DRAW = {
   track.innerHTML = GAL.map(([f, t, d, w, pos], i) => `<li class="gal__slide${w ? ' is-wide' : ''}" data-i="${i}"><div class="gal__frame"${w ? ' style="aspect-ratio:16/11"' : ''}><span class="gal__no"><svg viewBox="0 0 100 100"><use href="#star8"/></svg><span>${String(i + 1).padStart(2, '0')}</span></span><img src="${IMG(f)}" alt="" loading="lazy" draggable="false"${pos ? ` style="object-position:${pos}"` : ''}></div><p class="gal__cap"></p></li>`).join('');
   $$('.is-wide', track).forEach((s) => { s.style.width = 'clamp(320px, 52vw, 820px)'; });
   const slides = $$('.gal__slide', track);
-  const caps = () => slides.forEach((s, i) => { const [, t, d] = GAL[i]; $('.gal__cap', s).innerHTML = `<b>${loc(t)}</b>${loc(d)}`; $('img', s).alt = `${loc(t)}: ${loc(d)}`; });
+  const caps = () => slides.forEach((s, i) => { const [, t, d] = GAL[i]; $('.gal__cap', s).innerHTML = `<b>${loc(t)}</b>${loc(d)}`; $('img', s).alt = `${loc(t)}: ${loc(d)}${T('seo.alt')}`; });
   caps(); A40.on(caps);
   $('#galAll').textContent = String(slides.length).padStart(2, '0');
   let x = 0, tx = 0, idx = 0, drag = null, moved = 0, raf = 0, auto = 0, inView = false;
@@ -645,7 +645,7 @@ const DRAW = {
 (() => {
   const ol = $('#walk'), W = A40.SITE.walk;
   ol.innerHTML = W.map(([f], i) => `<li><button type="button" data-i="${i}"><span class="walk__ph"><img src="${IMG(f)}" alt="" loading="lazy"></span><span class="walk__no"><svg viewBox="0 0 100 100"><use href="#star8"/></svg><span>${String(i + 1).padStart(2, '0')}</span></span></button><p class="walk__cap"></p></li>`).join('');
-  const caps = () => $$('li', ol).forEach((li, i) => { const [, t, d] = W[i]; $('.walk__cap', li).innerHTML = `<b>${loc(t)}</b>${loc(d)}`; $('img', li).alt = `${loc(t)}: ${loc(d)}`; });
+  const caps = () => $$('li', ol).forEach((li, i) => { const [, t, d] = W[i]; $('.walk__cap', li).innerHTML = `<b>${loc(t)}</b>${loc(d)}`; $('img', li).alt = `${loc(t)}: ${loc(d)}${T('seo.alt')}`; });
   caps(); A40.on(caps);
   ol.addEventListener('click', (e) => { const b = e.target.closest('button'); if (!b) return; const [f, t, d] = W[+b.dataset.i]; openLB(IMG(f), loc(t) + ' · ' + loc(d)); });
   if (motion) gsap.from('.walk li', { y: 60, opacity: 0, duration: 1, stagger: .1, ease: 'power3.out', scrollTrigger: { trigger: ol, start: 'top 82%' } });
